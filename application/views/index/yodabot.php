@@ -4,6 +4,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 </head>
 <body>
+<?php
+    var_dump("llega2");
+?>
 <div class="text-center">
     <img src="application/files/baby-yoda-2.png" class="img-fluid" alt="Baby Yoda">
     <h2>YodaBot</h2>

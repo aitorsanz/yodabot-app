@@ -10,7 +10,7 @@ class IndexController {
      * @throws Exception
      */
     public function index(){
-
+        var_dump("llega");
         require_once('application/views/index/yodabot.php');
     }
 
