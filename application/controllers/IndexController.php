@@ -32,9 +32,9 @@ class IndexController {
                 }else{
 
                 }
-                //echo $html;
-                echo json_encode(array('html' => $html));
-                exit();
+                echo $html;
+                //echo json_encode(array('html' => $html));
+                //exit();
             } else {
                 echo 'error';
             }
