@@ -5,6 +5,7 @@
  * @param $action
  */
 function call($controller, $action){
+    var_dump($controller);
     require_once('application/controllers/' . $controller . 'controller.php');
     switch($controller){
         case 'index':
@@ -22,11 +23,11 @@ $controllers = array(
 );
 if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
-        $this->call($controller, $action);
+        call($controller, $action);
     }else{
-        $this->call('index', 'error');
+        call('index', 'error');
     }
 }else{
-    $this->call('index', 'error');
+    call('index', 'error');
 }
 ?>
