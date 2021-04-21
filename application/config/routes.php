@@ -5,7 +5,6 @@
  * @param $action
  */
 function call($controller, $action){
-    var_dump($controller);
     require_once('application/controllers/IndexController.php');
     switch($controller){
         case 'index':
@@ -13,8 +12,6 @@ function call($controller, $action){
             break;
 
     }
-    var_dump($controller);
-    var_dump($action);
     $controller->{$action}();
 }
 
