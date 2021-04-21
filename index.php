@@ -1,6 +1,5 @@
 <?php
 if(isset($_SERVER["REQUEST_URI"])){
-    var_dump($_SERVER["REQUEST_URI"]);
     $request = explode('/', $_SERVER["REQUEST_URI"]);
     if(isset($request[2])){
         $controller = $request[1];
