@@ -20,6 +20,9 @@ $controllers = array(
 );
 if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
+        var_dump($controller);
+        var_dump($action);
+        var_dump($controllers);
         call($controller, $action);
     }else{
         call('index', 'error');
