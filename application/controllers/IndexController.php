@@ -16,6 +16,7 @@ class IndexController {
     public function start(){
         $yodaBot = new YodaBot();
         $yodaBot->conectarYodaBot();
+        $yodaBot->iniciarConversacion();
     }
     public function conversation(){
         if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){

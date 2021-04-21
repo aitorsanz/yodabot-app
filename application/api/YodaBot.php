@@ -44,7 +44,11 @@ class YodaBot {
         //var_dump($result);
         setcookie('token', $info->accessToken);
         setcookie('expiration', $info->expiration);
-        var_dump($info);
+
+
+    }
+
+    public function iniciarConversacion(){
         //Iniciamos conversación
         $token = $_COOKIE['token'];
         //url de la petición
@@ -68,9 +72,7 @@ class YodaBot {
 
         setcookie('sessionId', $info->sessionId);
         setcookie('sessionToken', $info->sessionToken);
-        var_dump($info);
     }
-
 
     /**
      * Función que devuleve si el token ha expirado
