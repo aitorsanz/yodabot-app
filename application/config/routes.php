@@ -8,10 +8,12 @@ function call($controller, $action){
     require_once('application/controllers/' . $controller . 'controller.php');
     switch($controller){
         case 'index':
-            $controller= new IndexController();
+            $controller = new IndexController();
             break;
 
     }
+    var_dump($controller);
+    var_dump($action);
     $controller->{$action}();
 }
 
@@ -20,9 +22,6 @@ $controllers = array(
 );
 if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
-        var_dump($controller);
-        var_dump($action);
-        var_dump($controllers);
         call($controller, $action);
     }else{
         call('index', 'error');
