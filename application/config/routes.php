@@ -6,7 +6,7 @@
  */
 function call($controller, $action){
     var_dump($controller);
-    require_once('application/controllers/' . $controller . 'controller.php');
+    require_once('application/controllers/Indexcontroller.php');
     switch($controller){
         case 'index':
             $controller = new IndexController();
