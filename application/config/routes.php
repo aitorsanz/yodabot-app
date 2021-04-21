@@ -22,11 +22,11 @@ $controllers = array(
 );
 if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
-        call($controller, $action);
+        $this->call($controller, $action);
     }else{
-        call('index', 'error');
+        $this->call('index', 'error');
     }
 }else{
-    call('index', 'error');
+    $this->call('index', 'error');
 }
 ?>
