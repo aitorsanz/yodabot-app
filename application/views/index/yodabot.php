@@ -24,8 +24,8 @@
                 <input type="text" class="form-control" id="message" placeholder="Enter message" required>
             </div>
         </div>
-        <button type="button" id="sendMessage" class="btn btn-primary">Send</button>
         <button type="button" id="startConversation" class="btn btn-primary">Start</button>
+        <button type="button" id="sendMessage" class="btn btn-primary">Send</button>
     </form>
 </div>
 </body>
@@ -41,8 +41,10 @@
                 data: {'message' : message},
                 success: function(data, textStatus)
                 {
-                    console.log(data);
-                    $('#dialog').html(data);
+                    inicio = data.indexOf("div") - 1;
+                    fin = data.lastIndexOf("div") + 1;
+                    html = data.substr(inicio, fin);
+                    $('#dialog').append(html);
                     $('#writing').addClass('d-none');
                 },
                 error: function(data, textStatus){

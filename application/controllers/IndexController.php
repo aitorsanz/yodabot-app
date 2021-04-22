@@ -17,6 +17,7 @@ class IndexController {
         $yodaBot = new YodaBot();
         $yodaBot->conectarYodaBot();
         $yodaBot->iniciarConversacion();
+        setcookie('respuestasVacias', 0);
     }
     public function conversation(){
         if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
@@ -29,12 +30,34 @@ class IndexController {
                 if($pos === false){
                     //Reallizamos petición a API Yoda
                     $respuesta = $yodaBot->sendRequestYoda($message);
-                    $html .= "<p>Yoda: ".$respuesta."</p></div>";
+                    if(is_null($respuesta)){
+                        $respuestasVacias = $_COOKIE['respuestasVacias'];
+                        $respuestasVacias++;
+                        setcookie('respuestasVacias', $respuestasVacias);
+                        if($respuestasVacias < 2){
+                            $html .= "<p>Yoda: No Response</p></div>";
+                        }else{
+                            $planetas = $yodaBot->sendRandomYoda();
+                            $html .= "<p>Yoda: Films: ";
+                            foreach ($planetas as $planeta){
+                                $html .= " ".$planeta->name.", ";
+                            }
+                            $html .= "</p></div>";
+                        }
+                    }else{
+                        $html .= "<p>Yoda: ".$respuesta."</p></div>";
+                    }
                 }else{
-
+                    $peliculas = $yodaBot->sendForceYoda();
+                    $html .= "<p>Yoda: Films: ";
+                    foreach ($peliculas as $pelicula){
+                        $html .= " ".$pelicula->title.", ";
+                    }
+                    $html .= "</p></div>";
                 }
                 echo $html;
-                //echo json_encode(array('html' => $html));
+                //var_dump($html);
+                //echo json_encode(array('estado' => 'ok', 'html' => $html));
                 //exit();
             } else {
                 echo 'error';
